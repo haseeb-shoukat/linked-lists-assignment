@@ -1,3 +1,4 @@
+import { expect } from "expect";
 import { LinkedList } from "./LinkedList";
 
 test("Appends an empty list", () => {
@@ -28,4 +29,20 @@ test("Prepends a non-empty list", () => {
   list.prepend("bye");
   expect(list.head.value).toBe("bye");
   expect(list.tail.value).toBe("hello");
+});
+
+test("Return correct size of list", () => {
+  const list = new LinkedList();
+  expect(list.size()).toBe(0);
+  list.prepend("hello");
+  list.append("bye");
+  expect(list.size()).toBe(2);
+});
+
+test("Return head and tail", () => {
+  const list = new LinkedList();
+  list.append("item");
+  list.prepend("first");
+  expect(list.tail.value).toBe("item");
+  expect(list.head.value).toBe("first");
 });
