@@ -1,4 +1,3 @@
-import { expect } from "expect";
 import { LinkedList } from "./LinkedList";
 
 test("Appends an empty list", () => {
@@ -45,4 +44,39 @@ test("Return head and tail", () => {
   list.prepend("first");
   expect(list.tail.value).toBe("item");
   expect(list.head.value).toBe("first");
+});
+
+test("at(index) returns correct node at index", () => {
+  const list = new LinkedList();
+  expect(list.at(0)).toBe("Invalid Index");
+  expect(list.at(10)).toBe("Invalid Index");
+
+  list.append("first");
+  list.append("second");
+  list.append("third");
+
+  expect(list.at(0).value).toBe("first");
+  expect(list.at(1).value).toBe("second");
+  expect(list.at(2).value).toBe("third");
+});
+
+test("pop() removes last element from list", () => {
+  const list = new LinkedList();
+  list.append("first");
+  list.append("second");
+  list.append("third");
+
+  expect(list.pop().value).toBe("third");
+  expect(list.size()).toBe(2);
+  list.pop();
+  list.pop();
+  expect(list.pop()).toBe(null);
+});
+
+test("pop() returns null if list is empty", () => {
+  const list = new LinkedList();
+  list.append("first");
+  list.pop();
+
+  expect(list.pop()).toBe(null);
 });
