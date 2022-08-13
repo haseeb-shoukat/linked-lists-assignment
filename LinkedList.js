@@ -25,4 +25,22 @@ const LinkedList = class {
     }
     if (this.tail === null) this.tail = node;
   }
+
+  size() {
+    let size = 0;
+    let start = this.head;
+    while (start !== null) {
+      size++;
+      start = start.nextNode;
+    }
+    return size;
+  }
+
+  head() {
+    return this.head;
+  }
+
+  tail() {
+    return this.tail;
+  }
 };
