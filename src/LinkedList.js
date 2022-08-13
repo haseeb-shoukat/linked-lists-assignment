@@ -53,14 +53,33 @@ const LinkedList = class {
       let item = this.head;
       this.head = this.tail = null;
       return item;
-    }
-    else {
+    } else {
       let pre = this.at(this.size() - 2);
       let item = this.tail;
       pre.nextNode = null;
       this.tail = pre;
       return item;
     }
+  }
+
+  contains(value) {
+    let node = this.head;
+    while (node !== null) {
+      if (node.value === value) return true;
+      node = node.nextNode;
+    }
+    return false;
+  }
+
+  find(value) {
+    let index = 0;
+    let node = this.head;
+    while (node !== null) {
+      if (node.value === value) return index;
+      node = node.nextNode;
+      index += 1;
+    }
+    return null;
   }
 };
 
