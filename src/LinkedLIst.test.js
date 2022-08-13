@@ -119,3 +119,30 @@ test("find returns null for values not found", () => {
   list.pop();
   expect(list.find("zero")).toBe(null);
 });
+
+test("toString works for list", () => {
+  const list = new LinkedList();
+  list.append("first");
+  list.append("second");
+  list.append("third");
+
+  expect(list.toString()).toBe("( first ) -> ( second ) -> ( third ) -> null");
+});
+
+test("toString works for empty list", () => {
+  const list = new LinkedList();
+  list.append("first");
+  list.pop();
+
+  expect(list.toString()).toBe("null");
+});
+
+test("toString works for values which are numbers or boolean", () => {
+  const list = new LinkedList();
+  list.append(0);
+  list.append(true);
+  list.append(null)
+
+  expect(list.toString()).toBe("( 0 ) -> ( true ) -> ( null ) -> null");
+});
+
