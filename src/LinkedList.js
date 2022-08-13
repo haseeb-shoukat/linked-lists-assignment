@@ -44,3 +44,5 @@ const LinkedList = class {
     return this.tail;
   }
 };
+
+export { LinkedList };
