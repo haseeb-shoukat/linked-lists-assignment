@@ -80,3 +80,42 @@ test("pop() returns null if list is empty", () => {
 
   expect(list.pop()).toBe(null);
 });
+
+test("contains returns true if item is inside list", () => {
+  const list = new LinkedList();
+  list.append("first");
+  list.append("second");
+  list.append("third");
+
+  expect(list.contains("first")).toBe(true);
+  expect(list.contains("second")).toBe(true);
+  expect(list.contains("third")).toBe(true);
+});
+
+test("contains returns false if item is not inside list", () => {
+  const list = new LinkedList();
+  list.append("first");
+  list.append("second");
+
+  expect(list.contains("third")).toBe(false);
+});
+
+test("find returns correct index for values", () => {
+  const list = new LinkedList();
+  list.append("first");
+  list.append("second");
+  list.prepend("zero");
+
+  expect(list.find("zero")).toBe(0);
+  expect(list.find("first")).toBe(1);
+  expect(list.find("second")).toBe(2);
+});
+
+test("find returns null for values not found", () => {
+  const list = new LinkedList();
+  list.append("first");
+
+  expect(list.find("zero")).toBe(null);
+  list.pop();
+  expect(list.find("zero")).toBe(null);
+});
