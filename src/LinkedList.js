@@ -36,12 +36,31 @@ const LinkedList = class {
     return size;
   }
 
-  head() {
-    return this.head;
+  at(index) {
+    if (this.size() < 1 || index < 0) return "Invalid Index";
+
+    let item = this.head;
+    for (let i = 0; i < index; i++) {
+      if (item === null) return item;
+      item = item.nextNode;
+    }
+    return item;
   }
 
-  tail() {
-    return this.tail;
+  pop() {
+    if (this.size() == 0) return null;
+    if (this.size() == 1) {
+      let item = this.head;
+      this.head = this.tail = null;
+      return item;
+    }
+    else {
+      let pre = this.at(this.size() - 2);
+      let item = this.tail;
+      pre.nextNode = null;
+      this.tail = pre;
+      return item;
+    }
   }
 };
 
