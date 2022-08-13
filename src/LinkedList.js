@@ -81,6 +81,20 @@ const LinkedList = class {
     }
     return null;
   }
+
+  toString() {
+    let str = "";
+    let node = this.head;
+    while (node !== null) {
+      let value = node.value;
+      if (typeof value !== "string") value = JSON.stringify(value);
+      
+      str = str + `( ${value} ) -> `;
+      node = node.nextNode;
+    }
+
+    return str + "null";
+  }
 };
 
 export { LinkedList };
